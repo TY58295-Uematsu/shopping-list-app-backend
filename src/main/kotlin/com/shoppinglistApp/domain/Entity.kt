@@ -42,10 +42,10 @@ data class ShoppingItem(
     var item: String,
     @Column( nullable = false)
     var buy: Boolean? = false,
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="shop_id",  nullable=false)
     var shopId: Shops,
-    @ManyToOne(fetch = FetchType.LAZY) // LAZYは必要になった時にロードする設定
+    @ManyToOne(fetch = FetchType.EAGER) // LAZYは必要になった時にロードする設定
     @JoinColumn(name = "user_id", nullable = false)
     val user: Users,
 )

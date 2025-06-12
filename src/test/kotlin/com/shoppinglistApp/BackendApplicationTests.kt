@@ -37,6 +37,13 @@ class BackendApplicationTests(
 	}
 
 	@Test
+	fun `itemGETリクエストはOKステータスを返す`() {
+		val response = restTemplate.getForEntity("http://localhost:$port/lists/all/1", String::class.java)
+		// レスポンスのステータスコードは OK である。
+		assertThat(response.statusCode, equalTo(HttpStatus.OK))
+	}
+
+	@Test
 	fun `POSTリクエスト1はOKステータスを返す`() {
 		// localhost/todos に POSTリクエストを送る。このときのボディは {"text": "hello"}
 		val request1 = UserRequest(userName = "hello100", mail = "example1@mail.com", rootShop = 1)
